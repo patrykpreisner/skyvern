@@ -38,7 +38,7 @@ services:
     environment:
       - DATABASE_STRING=postgresql+psycopg://skyvern:skyvern@postgres:5432/skyvern
       - PORT=8000
-      - ENV='local'
+      - ENV=local
       - BROWSER_TYPE=chromium-headful
       - ENABLE_CODE_BLOCK=true
       #- BROWSER_TYPE='chromium-headful'
@@ -53,7 +53,7 @@ services:
       - ENABLE_LOG_ARTIFACTS=false
       - ENABLE_VOLCENGINE=false
       - ENABLE_OPENAI_COMPATIBLE=false
-      - SKYVERN_BASE_URL=http://${HETZNER_URL}:8007
+      - SKYVERN_BASE_URL=http://${HETZNER_IP}:8007
       - SKYVERN_API_KEY=${SKYVERN_API_KEY}
 
       # - BROWSER_TYPE=cdp-connect
@@ -171,9 +171,9 @@ services:
     #   A route for the API: api.yourdomain.com -> localhost:8000
     #   A route for the UI: yourdomain.com -> localhost:8080
     #   A route for the artifact API: artifact.yourdomain.com -> localhost:9090 (maybe not needed)
-      - VITE_WSS_BASE_URL=ws://${HETZNER_IP}:8007/api/v1
-      - VITE_ARTIFACT_API_BASE_URL=http://${HETZNER_IP}:9090
-      - VITE_API_BASE_URL=http://${HETZNER_IP}:8007/api/v1
+      - VITE_WSS_BASE_URL=ws://localhost:8007/api/v1
+      - VITE_ARTIFACT_API_BASE_URL=http://localhost:9090
+      - VITE_API_BASE_URL=http://localhost:8007/api/v1
       - VITE_SKYVERN_API_KEY=${VITE_SKYVERN_API_KEY}
     depends_on:
       skyvern:
